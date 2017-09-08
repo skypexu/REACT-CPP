@@ -182,7 +182,7 @@ public:
         // in that case we won't reset the timer to not interfere with the event loop,
         // but only update the expire time, when the timer then expires, the callback
         // will not be called, but a new timer is going to be set instead
-        if (_active && _loop->now() + timeout < _expire)
+        if (_active && _loop->now() + timeout >= _expire)
         {
             // set the new expire time
             _expire = _loop->now() + timeout;
